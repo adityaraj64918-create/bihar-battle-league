@@ -1,0 +1,14 @@
+const express=require('express'), path=require('path');
+const app=express(); app.use(express.json()); app.use(express.static(path.join(__dirname,'public')));
+let tournaments=[{id:1,name:'BBL Offline Squad Battle',game:'Free Fire MAX',mode:'Squad',venue:'Patna City, Bihar',slots:24,filled:0,status:'Registration Soon'}];
+let teams=[], announcements=[{text:'🚨 First BBL tournament announcement coming soon!'}], scores=[];
+app.get('/api/tournaments',(req,res)=>res.json(tournaments));
+app.get('/api/teams',(req,res)=>res.json(teams));
+app.get('/api/announcements',(req,res)=>res.json(announcements));
+app.get('/api/scores',(req,res)=>res.json(scores));
+app.post('/api/register',(req,res)=>{const {captain,squad,players}=req.body;if(!captain||!squad)return res.status(400).json({error:'Captain and squad are required'}); const t=tournaments[0]; if(t.filled>=t.slots)return res.status(409).json({error:'Slots are full'}); const team={id:Date.now(),captain,squad,players:Number(players)||4,tournamentId:t.id};teams.push(team);t.filled++;res.json(team)});
+app.post('/api/admin/tournament',(req,res)=>{const t={id:Date.now(),...req.body,filled:0};tournaments.push(t);res.json(t)});
+app.post('/api/admin/announcement',(req,res)=>{const a={text:req.body.text||''};announcements.unshift(a);res.json(a)});
+app.post('/api/admin/score',(req,res)=>{const s={id:Date.now(),...req.body};scores.push(s);res.json(s)});
+app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
+app.listen(process.env.PORT||3000,()=>console.log('BBL server running'));

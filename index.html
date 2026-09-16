@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BBL | Bihar Battle League</title><link rel="stylesheet" href="style.css"></head>
+<body><header><div class="brand"><b>BBL</b><span>BIHAR BATTLE LEAGUE<small>OFFLINE ESPORTS • PATNA CITY</small></span></div><button onclick="menu()">☰</button></header>
+<nav id="nav"><a href="#home">Home</a><a href="#tournaments">Tournaments</a><a href="#leaderboard">Leaderboard</a><a href="#updates">Updates</a><a href="#admin">Admin</a></nav>
+<main>
+<section id="home" class="hero"><label>🔥 PATNA CITY • BIHAR</label><h1>COMPETE.<br><i>CONQUER.</i></h1><p>Bihar Battle League — local competitive gaming events.</p><button onclick="document.querySelector('#tournaments').scrollIntoView()">EXPLORE TOURNAMENTS</button></section>
+<section id="tournaments"><h2>Upcoming Tournaments</h2><div id="tlist"></div></section>
+<section><h2>Join a Tournament</h2><form id="reg"><input name="captain" placeholder="Captain name" required><input name="squad" placeholder="Squad name" required><input name="players" type="number" min="1" max="4" value="4" placeholder="Players"><button>REGISTER INTEREST</button></form><p id="msg"></p></section>
+<section id="leaderboard"><h2>Leaderboard</h2><div id="board" class="board"></div></section>
+<section id="updates"><h2>Latest Updates</h2><div id="alist"></div></section>
+<section id="admin"><h2>Admin Panel</h2><p class="muted">Prototype admin controls — add tournaments, announcements and scores through the forms below. Add real authentication before public launch.</p>
+<form id="newt"><input name="name" placeholder="Tournament name" required><input name="game" value="Free Fire MAX"><input name="mode" value="Squad"><input name="venue" value="Patna City, Bihar"><input name="slots" type="number" value="24"><button>ADD TOURNAMENT</button></form>
+<form id="newa"><input name="text" placeholder="Announcement" required><button>POST UPDATE</button></form>
+<form id="news"><input name="team" placeholder="Team"><input name="points" type="number" placeholder="Points"><button>UPDATE SCORE</button></form></section>
+<section class="contact"><h2>BBL Community</h2><a href="https://wa.me/916207511361" target="_blank">📲 WhatsApp 6207511361</a><p>@biharbattleleague</p></section></main>
+<footer>© 2026 Bihar Battle League</footer><script src="app.js"></script></body></html>
